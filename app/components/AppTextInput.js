@@ -8,7 +8,7 @@ const AppTextInput = ({ icon, ...otherProps }) => {
 	return (
 		<View style={styles.container}>
 			{icon && <MaterialCommunityIcons style={styles.icon} name={icon} size={20} color={colors.medium} />}
-			<TextInput {...otherProps} style={styles.textInput} />
+			<TextInput {...otherProps} style={styles.textInput} placeholderTextColor={colors.medium} />
 		</View>
 	);
 };

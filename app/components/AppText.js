@@ -1,8 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, Platform } from 'react-native';
 
-const AppText = ({ children, style }) => {
-	return <Text style={[ styles.text, { ...style } ]}>{children}</Text>;
+const AppText = ({ children, style, numberOfLines }) => {
+	return (
+		<Text numberOfLines={numberOfLines} style={[ styles.text, { ...style } ]}>
+			{children}
+		</Text>
+	);
 };
 
 export default AppText;

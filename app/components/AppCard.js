@@ -9,7 +9,9 @@ const AppCard = ({ title, subTitle, image }) => {
 			<Image source={image} style={styles.image} />
 			<View style={styles.textContainer}>
 				<AppText style={styles.title}>{title}</AppText>
-				<AppText style={styles.subTitle}>{subTitle}</AppText>
+				<AppText numberOfLines={2} style={styles.subTitle}>
+					{subTitle}
+				</AppText>
 			</View>
 		</View>
 	);
