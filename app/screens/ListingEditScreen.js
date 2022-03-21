@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import * as Yup from 'yup';
 
+import useLocation from '../hooks/useLocation';
 import Screen from '../components/Screen';
 import AppFormContainer from '../components/form/AppFormContainer';
 import AppFormField from '../components/form/AppFormField';
 import AppFormPicker from '../components/form/AppFormPicker';
 import AppFormSubmit from '../components/form/AppFormSubmit';
+import AppFormImageListPicker from '../components/form/AppFormImageListPicker';
 
 const ITEMS = [
 	{
@@ -69,24 +71,28 @@ const initialValues = {
 	title: '',
 	price: '',
 	description: '',
-	category: null
+	category: null,
+	images: []
 };
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label('Title'),
 	price: Yup.number().required().min(1).max(100000).label('Price'),
 	description: Yup.string().label('Description'),
-	category: Yup.object().required().nullable().label('Category')
+	category: Yup.object().required().nullable().label('Category'),
+	images: Yup.array().min(1, 'Please select at least one image.')
 });
 
 const ListingEditScreen = () => {
+	const location = useLocation();
 	return (
 		<Screen style={styles.container}>
 			<KeyboardAvoidingView behavior='padding'>
 				<AppFormContainer
 					initialValues={initialValues}
 					validationSchema={validationSchema}
-					onSubmit={(values) => console.log(values)}>
+					onSubmit={(values) => console.log(values, location)}>
+					<AppFormImageListPicker name='images' />
 					<AppFormField name='title' placeholder='Title' autoCorrect={false} maxLegth={255} />
 					<AppFormField name='price' placeholder='Price' keyboardType='numeric' maxLegth={8} />
 					<AppFormPicker name='category' placeholder='Category' items={ITEMS} />
