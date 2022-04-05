@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
 	textInput: {
 		fontSize: 18,
 		fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-		color: colors.dark
+		color: colors.dark,
+		flex: 1
 	}
 });

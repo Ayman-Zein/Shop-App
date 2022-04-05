@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15
 	},
 	text: { flex: 1, color: colors.medium },
-	itemText: { color: colors.dark },
+	itemText: { flex: 1, color: colors.dark },
 	icon: {
 		marginRight: 10
 	},

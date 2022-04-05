@@ -19,7 +19,7 @@ const listings = [
 	}
 ];
 
-const ListingScreen = () => {
+const ListingScreen = ({ navigation }) => {
 	return (
 		<Screen style={styles.screen}>
 			<View style={styles.container}>
@@ -27,7 +27,12 @@ const ListingScreen = () => {
 					data={listings}
 					keyExtractor={(item) => item.id.toString()}
 					renderItem={({ item }) => (
-						<AppCard title={item.title} subTitle={`$ ${item.price} `} image={item.image} />
+						<AppCard
+							title={item.title}
+							subTitle={`$ ${item.price} `}
+							image={item.image}
+							onPress={() => navigation.navigate('ListDetails', item)}
+						/>
 					)}
 				/>
 			</View>

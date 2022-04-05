@@ -20,11 +20,12 @@ const menuItems = [
 		icon: {
 			name: 'email',
 			backgroundColor: colors.secondary
-		}
+		},
+		targetScreen: 'Messages'
 	}
 ];
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
 	return (
 		<Screen style={styles.accountScreen}>
 			<View style={styles.accountSec}>
@@ -37,6 +38,9 @@ const AccountScreen = () => {
 					ItemSeparatorComponent={ItemsSeparator}
 					renderItem={({ item }) => (
 						<ListItem
+							onPress={() => {
+								item.targetScreen && navigation.navigate(item.targetScreen);
+							}}
 							title={item.title}
 							ComponentIcon={
 								<CircleIcon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
